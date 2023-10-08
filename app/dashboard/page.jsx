@@ -6,6 +6,8 @@ import { addCarApi } from '../config/apis';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useMutation } from '@tanstack/react-query';
+import { AiFillDelete } from "react-icons/ai";
+import Auth from '../hoc/auth';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -22,7 +24,6 @@ const Dashboard = () => {
   const loginUser = async (values) => {
     setLoading(true);
     if (values) {
-      console.log(values);
       let formData = new FormData();
       formData.append("model", values.model);
       formData.append("price", values.price);
@@ -83,7 +84,7 @@ const Dashboard = () => {
               <div className="flex flex-wrap -m-2">
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label htmlfor="name" className="leading-7 text-sm text-gray-600">Model</label>
+                    <label htmlFor="name" className="leading-7 text-sm text-gray-600">Model</label>
                     <input onChange={handleChange} type="text" id="name" name="model" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     {
                       (errors.model && touched.model) &&
@@ -95,7 +96,7 @@ const Dashboard = () => {
                 </div>
                 <div className="p-2 w-1/2">
                   <div className="relative">
-                    <label htmlfor="email" className="leading-7 text-sm text-gray-600">Price</label>
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">Price</label>
                     <input onChange={handleChange} type="number" id="email" name="price" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     {
                       (errors.price && touched.price) &&
@@ -107,7 +108,7 @@ const Dashboard = () => {
                 </div>
                 <div className="p-2 w-full">
                   <div className="relative">
-                    <label htmlfor="email" className="leading-7 text-sm text-gray-600">Phone</label>
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">Phone</label>
                     <input onChange={handleChange} type="number" id="email" name="phone" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                     {
                       (errors.phone && touched.phone) &&
@@ -119,15 +120,15 @@ const Dashboard = () => {
                 </div>
                 <div className="p-2 w-full">
                   <div className="relative flex">
-                    <label htmlfor="email" className="leading-7 mr-4 text-sm text-gray-600">City</label>
+                    <label htmlFor="email" className="leading-7 mr-4 text-sm text-gray-600">City</label>
                     <div className="flex">
                       <div className="flex items-center mr-4">
-                        <input name="city" onChange={handleChange} id="inline-radio" type="radio" defaultValue className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label htmlfor="inline-radio" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Lahore</label>
+                        <input name="city" value="Lahore" onChange={handleChange} id="inline-radio" type="radio" defaultValue className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label htmlFor="inline-radio" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Lahore</label>
                       </div>
                       <div className="flex items-center mr-4">
-                        <input name="city" onChange={handleChange} id="inline-2-radio" type="radio" defaultValue className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label htmlfor="inline-2-radio" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Karachi</label>
+                        <input name="city" value="karachi" onChange={handleChange} id="inline-2-radio" type="radio" defaultValue className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label htmlFor="inline-2-radio" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Karachi</label>
                       </div>
                       {
                         (errors.city && touched.city) &&
@@ -140,7 +141,7 @@ const Dashboard = () => {
                 </div>
                 <div className="p-2 w-full">
                   <div className="relative">
-                    <label htmlfor="message" className="leading-7 text-sm text-gray-600">No of Pictures</label>
+                    <label htmlFor="message" className="leading-7 text-sm text-gray-600">No of Pictures</label>
                     <select onChange={handleChange} id="numbers" name='no_of_images' className="bg-gray-50 mt-1 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       <option defaultValue>Choose a number</option>
                       {
@@ -189,7 +190,21 @@ const Dashboard = () => {
                 <div className="flex mt-3">
                   {
                     values?.image?.length > 0 && values?.image?.map((item, index) => {
-                      return <img style={{ width: '100px', height: '100px' }} className="mr-3" key={index} src={URL.createObjectURL(item)} />
+                      return <div className="container_main mr-3">
+                        <img className="mr-3 image" key={index} src={URL.createObjectURL(item)} />
+                        <div class="overlay">
+                          <a href="#" class="icon" title="User Profile">
+                            <AiFillDelete style={{ width: '30px' }} onClick={() => {
+                              let filter = values?.image?.filter((pic, ind) => {
+                                if (index != ind) {
+                                  return true;
+                                }
+                              });
+                              setFieldValue('image', filter);
+                            }} />
+                          </a>
+                        </div>
+                      </div>
                     })
                   }
                 </div>
@@ -216,4 +231,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default Auth(Dashboard);
