@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'
 
-const Login = () => {
+export default function Login() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
@@ -101,5 +101,3 @@ const Login = () => {
         </div>
     </section>
 }
-
-export default Login;

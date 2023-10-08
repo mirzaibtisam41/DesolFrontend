@@ -10,7 +10,7 @@ import { AiFillDelete } from "react-icons/ai";
 import Auth from '../hoc/auth';
 import Image from 'next/image'
 
-const Dashboard = () => {
+function Dashboard() {
   const [loading, setLoading] = useState(false);
 
   const schema = Yup.object().shape({
