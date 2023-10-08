@@ -7,6 +7,7 @@ import { loginUserApi } from '../config/apis';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image'
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
@@ -46,7 +47,7 @@ const Login = () => {
     return <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                <img className="w-8 h-8 mr-2" src="https://media.licdn.com/dms/image/C560BAQGAQPzsrX1_nw/company-logo_200_200/0/1647721750966?e=1704931200&v=beta&t=WwdsArBRCDhS2s-0RTcd7_15NL2a8uABfOnB0rXi6pk" alt="logo" />
+                <Image width={100} height={100} className="w-8 h-8 mr-2 transition-opacity duration-[2s]" src="https://res.cloudinary.com/dbyeoja4c/image/upload/v1696743463/1647721750966_rkrr7l.jpg" alt="logo" />
                 Desol Int.
             </a>
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

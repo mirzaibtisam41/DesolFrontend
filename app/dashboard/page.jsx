@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { useMutation } from '@tanstack/react-query';
 import { AiFillDelete } from "react-icons/ai";
 import Auth from '../hoc/auth';
+import Image from 'next/image'
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -190,8 +191,8 @@ const Dashboard = () => {
                 <div className="flex mt-3">
                   {
                     values?.image?.length > 0 && values?.image?.map((item, index) => {
-                      return <div className="container_main mr-3">
-                        <img className="mr-3 image" key={index} src={URL.createObjectURL(item)} />
+                      return <div key={index} className="container_main mr-3">
+                        <Image width={150} height={150} className="mr-3 image transition-opacity duration-[2s]" key={index} src={URL.createObjectURL(item)} />
                         <div class="overlay">
                           <a href="#" class="icon" title="User Profile">
                             <AiFillDelete style={{ width: '30px' }} onClick={() => {
