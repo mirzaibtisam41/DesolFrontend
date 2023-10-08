@@ -192,7 +192,7 @@ const Dashboard = () => {
                   {
                     values?.image?.length > 0 && values?.image?.map((item, index) => {
                       return <div key={index} className="container_main mr-3">
-                        <Image width={150} height={150} className="mr-3 image transition-opacity duration-[2s]" key={index} src={URL.createObjectURL(item)} />
+                        <Image alt="img" width={150} height={150} className="mr-3 image transition-opacity duration-[2s]" key={index} src={URL.createObjectURL(item)} />
                         <div class="overlay">
                           <a href="#" class="icon" title="User Profile">
                             <AiFillDelete style={{ width: '30px' }} onClick={() => {
